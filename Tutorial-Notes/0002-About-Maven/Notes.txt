@@ -1,0 +1,41 @@
+============
+MAVEN
+============
+- Maven is a widely used build automation and project management tool primarily used for Java projects, 
+  although it can be adapted for other programming languages as well
+
+Here's a high-level overview of Maven:
+
+- Project Object Model (POM):
+     At the core of Maven is the Project Object Model, represented by an XML file called pom.xml. This file defines the 
+     project's metadata, including its dependencies, build plugins, goals, and other configuration details. The POM serves 
+     as the blueprint for building the project.
+
+- Dependency Management: 
+    Maven simplifies dependency management by allowing you to specify the external libraries and dependencies your project needs. 
+    It can automatically download and include these dependencies in your project's classpath, reducing the need to manage libraries manually.
+
+- Build Lifecycle: 
+    Maven defines a standard build lifecycle consisting of phases such as clean, compile, test, package, install, and deploy. 
+    You can execute these phases to perform various tasks in a specific order. For example, the compile phase compiles your 
+    source code, while the package phase creates distribution packages (e.g., JAR or WAR files).
+
+- Plugins: 
+    Maven is highly extensible through plugins. Plugins provide additional functionality and allow you to customize the build 
+    process. For example, the maven-compiler-plugin is used to configure and customize the compilation of source code.
+
+- Convention over Configuration: 
+    Maven follows a "convention over configuration" approach, meaning that it enforces certain project structure and naming 
+    conventions. This reduces the need for extensive configuration, as long as you adhere to these conventions.
+
+- Repository System: 
+    Maven relies on a central repository system (like Maven Central) to store and distribute project dependencies. 
+    It caches downloaded dependencies locally to speed up builds and ensure consistent builds across different environments.
+
+- Transitive Dependency Resolution: 
+    Maven can resolve transitive dependencies, meaning it can automatically fetch not only the direct dependencies you specify 
+    but also their dependencies. This simplifies the management of complex project dependencies.
+
+- Multi-Module Projects: 
+    Maven supports multi-module projects, where you can manage multiple subprojects within a single parent project. 
+    This is useful for structuring complex software projects.

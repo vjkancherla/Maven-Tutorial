@@ -1,0 +1,32 @@
+===============
+INSTALL JAVA
+===============
+NOTE: DO NOT INSTALL USING BREW
+
+- Search Google for "download java SE"
+- Download the latest DMG package and install it
+
+
+===========================================
+INSTALL EXTENSION PACK FOR JAVA IN VSCODE
+===========================================
+- Search plugins for "Extension Pack for Java"
+- Install it.
+
+
+=========================
+INSTALL TOMCAT IN VSCODE
+=========================
+- Seach plugins for "Community Server Connectors"
+- Install it
+- Install Tomcat using Community Server Connectors.
+    - Follow instructions here: https://code.visualstudio.com/docs/java/java-tomcat-jetty
+
+
+====================
+INSTALL MAVEN
+=====================
+- Download and unzip Maven package from Apache Maven offical page
+- Once Unzipped, add a sim-link as below:
+    - sudo ln -s /Users/vijaykancherla/Downloads/apache-maven-3.9.5/bin/mvn /usr/local/bin/mvn
+- >> mvn -version

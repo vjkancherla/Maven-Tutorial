@@ -1,0 +1,37 @@
+=======================
+MVN PLUGINS AND GOALS
+=======================
+
+PLUGINS
+-------
+- Plugins in Maven are responsible for extending the build process beyond what's provided by default.
+- Maven plugins are defined in your project's POM file within the <build> section.
+- Plugins can be used to perform tasks such as compiling code, running tests, generating documentation, packaging artifacts, and more.
+- Plugins can also be used for custom tasks like code generation or integration with external tools and services.
+- Some commonly used Maven plugins include the Maven Compiler Plugin, Maven Surefire Plugin (for running tests), Maven JAR Plugin, and Maven Release Plugin.
+
+
+GOALS
+------
+- Goals are specific tasks or operations provided by Maven plugins.
+- Each plugin typically defines a set of goals that you can use to customize the build process.
+
+
+COMMANDS
+---------
+- mvn <PLUGIN>:help
+     list all goals in a specific plugin
+     eg: mvn failsafe:help
+
+- mvn <PLUGIN>:<GOAL>
+    to run a specific goal
+    eg: mvn failsafe:integration-test
+
+
+EXAMPLES
+----------
+- mvn archetype:generate
+    run the "generate" goal of archetype plugin
+
+- mvn install:install
+    run the install goal (this is automatically inferred. We just run mvn install)

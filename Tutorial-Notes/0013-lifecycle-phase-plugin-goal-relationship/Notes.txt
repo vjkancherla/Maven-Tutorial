@@ -1,0 +1,41 @@
+================================================================
+RELATIONSHIP BETWEEN LIFECYCLE STAGE, PHASES, PLUGINS AND GOALS
+=================================================================
+- In Maven, there is a hierarchical relationship between the following elements: Lifecycle stage, phase, plugin, and goal
+
+To summarize the relationship:
+
+- A lifecycle stage represents a high-level goal for the build process.
+- Each lifecycle stage is composed of several phases, which are specific steps within that stage.
+- Each phase is associated with one or more goals, which are tasks or operations provided by plugins.
+- Plugins are responsible for performing the actual work and providing the implementation for the goals.
+
+
+Here's a more detailed breakdown of the relationship between these elements:
+
+[1] Lifecycle Stage:
+    A Maven build is divided into several predefined lifecycle stages. 
+    Each stage represents a high-level goal or phase of the build process.
+    Examples of lifecycle stages include: clean, validate, compile, test, package, install, and deploy.
+    Each stage corresponds to a specific set of goals and phases.
+
+
+[2] Phase:
+    A phase is a specific step within a lifecycle stage.
+    Each phase represents a particular point in the build process when one or more goals are executed.
+    Phases are executed sequentially within a lifecycle stage.
+    For example, the compile phase is part of the compile lifecycle stage and is responsible for compiling the source code.
+
+
+[3] Plugin:
+    A plugin is an extension that provides specific functionality or tasks to Maven.
+    Plugins are bound to one or more lifecycle stages and their associated phases.
+    A plugin may define multiple goals, which are the individual tasks or operations it can perform.
+    Maven plugins are defined in the project's POM file or in the parent POM and can also be provided by external dependencies.
+
+
+[4] Goal:
+    A goal is a specific task or operation provided by a Maven plugin.
+    Goals are executed within specific phases of a lifecycle stage.
+    You can configure and customize the behavior of a plugin by specifying which goals to execute in which phases.
+    Examples of goals include compile, test, install, deploy, and many others, depending on the plugins used in your project.

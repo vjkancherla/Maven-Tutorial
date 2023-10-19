@@ -1,0 +1,34 @@
+==============
+MVN COMMANDS
+===============
+
+BUILD THE JAVA/MAVEN PROJECT
+------------------------------
+>> cd Sample-Projects
+
+>> mvn install
+
+Running "mvn install" will result in a executable jar file created in "target" folder.
+
+NOTE: If you see errors like below:
+====
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] Source option 7 is no longer supported. Use 8 or later.
+[ERROR] Target option 7 is no longer supported. Use 8 or later.
+====
+
+You need to add the following to POM.xml:
+====
+<properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+====
+
+
+RUN THE JAR FILE
+------------------
+>> cd Sample-Projects
+
+>> java -cp hello-world/target/hello-world-1.0-SNAPSHOT.jar com.example.vjk.App
