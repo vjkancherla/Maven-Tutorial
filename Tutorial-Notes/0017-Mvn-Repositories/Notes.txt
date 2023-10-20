@@ -1,0 +1,51 @@
+=====================
+MAVEN REPOSITORIES
+=====================
+- Maven repositories are centralized storage locations where project artifacts (like JAR files, WAR files, libraries, etc.) 
+  are stored and can be retrieved during a build process. 
+
+There are three main types of Maven repositories:
+
+[1] Central Repository:
+    - It's the default repository provided by Maven where most publicly available artifacts are hosted. 
+    - The central repository is located at repo.maven.apache.org/maven2.
+    - When you specify a dependency in your pom.xml without mentioning any repository, Maven will try to fetch that dependency from the central repository.
+    - Most open-source libraries and tools are available in the central repository.
+
+    EXAMPLE: To download mysql's mysql-connector-java client v8.0.20 from Apache central repo:
+        ----
+        <dependencies>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.20</version> 
+            </dependency>
+        </dependencies>
+        ----
+        The above dependency is located at: https://repo.maven.apache.org/maven2/mysql/mysql-connector-java/8.0.20/
+
+
+[2] Local Repository:
+    - It's a cache on your local machine (by default, it's located in the .m2 directory in your home folder). 
+      When Maven tries to fetch a dependency, it first looks in the local repository.
+    - If the dependency is not found locally, Maven will download it from the central repository (or any other specified remote repository) 
+      and then store a copy in the local repository. This means that subsequent builds can use the locally cached artifact without re-downloading it.
+    - It's useful for speeding up builds and allowing offline builds (assuming all necessary dependencies have been previously downloaded).
+
+
+[3] REMOTE/CUSTOM/THIRD-PARTY Repository:
+    - These are custom repositories, either set up by organizations for internal use or by third parties for distributing specific sets of artifacts.
+    - Examples include:
+        - Nexus and Artifactory
+        - jcenter
+    - Remote repositories can be specified in the pom.xml to let Maven know where to fetch certain dependencies.
+
+    EXAMPLE: if you need to fetch artifacts from a repository other than the central repository, you can specify that in your pom.xml using the <repositories> element:
+    -----
+    <repositories>
+        <repository>
+            <id>custom-repo</id>
+            <url>http://url-to-your-custom-repo</url>
+        </repository>
+    </repositories>
+    -----

@@ -1,0 +1,39 @@
+==================
+MAVEN COORDINATES
+===================
+- Maven coordinates are a way of uniquely identifying a particular project artifact (like a JAR file) in the Maven ecosystem. 
+- These coordinates are part of Maven's dependency mechanism, which allows you to declare dependencies for your project 
+  and fetch them from a centralized repository (like Maven Central).
+
+There are five primary coordinates:
+
+- GroupId: 
+    Typically represents the organization or project that the artifact belongs to. 
+    It's usually in a reverse domain name format. For example, the GroupId for all Maven-managed projects from 
+    Apache Software Foundation starts with "org.apache".
+     
+- ArtifactId: 
+    Represents the name of the project/artifact. This is usually the name of the library or tool. For example, for Apache Commons Lang, 
+    the ArtifactId would be "commons-lang3".
+
+- Version: 
+    Represents the version of the artifact. This is crucial, as projects evolve over time and users may want to depend on 
+    a specific version of a library.
+
+- Packaging (optional, defaults to "jar"): 
+    Represents the type of the artifact, such as JAR, WAR, or POM. The packaging can determine how the artifact is used. 
+    For instance, JARs might be used as libraries in other projects, while WARs are typically deployed to web servers.
+
+- Classifier (optional):
+     This is an additional classifier to differentiate artifacts that were built from the same POM but have different contents. 
+     For instance, you might have JARs that are compiled with different Java versions or are meant for different platforms.
+
+EXAMPLE:
+    To tell Maven to fetch version 3.12.0 of the commons-lang3 artifact from the organization org.apache.commons:
+    -----
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.12.0</version>
+    </dependency>
+    -----

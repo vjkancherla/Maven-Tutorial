@@ -1,0 +1,30 @@
+==========
+USE-CASE
+==========
+Create a Maven project for:
+
+[1] A Java class to accept two numbers from the command line, add them and display the result.
+
+[2] A Java Test class to test the Main class
+
+
+=====================
+CREATE MAVEN PROJECT
+=====================
+>> cd Sample-Projects
+
+>> mvn archetype:generate \                                                                                       
+-DgroupId="com.example.vjk" \
+-DartifactId="add-two-numbers" \
+-DarchetypeArtifactId="maven-archetype-quickstart" \
+-DinteractiveMode=false
+
+
+==========================
+BUILD AND RUN THE PROJECT
+==========================
+>> cd Sample-Projects/add-two-numbers
+
+>> mvn install
+
+>> java -cp target/add-to-numbers-1.0-SNAPSHOT.jar com.example.vjk.AddTwoNumbers 5 6

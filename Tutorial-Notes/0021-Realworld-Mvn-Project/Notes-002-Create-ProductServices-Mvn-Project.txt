@@ -1,0 +1,53 @@
+=========================================
+CREATE MAVEN PROJECT FROM COMMAND LINE
+==========================================
+>> cd Sample-Projects
+
+>> mvn archetype:generate \
+-DgroupId="com.example.product" \
+-DartifactId="product-services" \
+-DarchetypeArtifactId="maven-archetype-quickstart" \
+-DinteractiveMode=false
+
+
+================================
+CREATE MVN PROJECT FROM VSCODE
+================================
+
+[1] Create a folder called "Sample-Projects" at the root 
+
+[2] Right-Click on "Sample-Projects" and select "Create Maven Project" 
+
+[3] Select "maven-archetype-quickstart" for "archetype"
+
+[4] Select "1.4" for "version"
+
+[5] Use "com.example.product" for "groupid"
+
+[6] Use "product-services" for "artefact id"
+
+[7] Use "Sample-Projects" as the destination folder
+
+[8] A terminal will open and will execute the following command:
+==
+mvn org.apache.maven.plugins:maven-archetype-plugin:3.1.2:generate \
+-DarchetypeArtifactId="maven-archetype-quickstart" \
+-DarchetypeGroupId="org.apache.maven.archetypes" \
+-DarchetypeVersion="1.4" -DgroupId="com.example.product" \
+-DartifactId="product-services" 
+==
+
+You will be prompted for:
+==
+Define value for property 'version' 1.0-SNAPSHOT: :
+==
+Just press enter.
+
+You will be prompted for:
+==
+Confirm properties configuration:
+groupId: com.example.vjk
+==
+Just press enter.
+
+[9] You will now see a Maven project created in the Sample-Projects" folder.

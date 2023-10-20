@@ -1,0 +1,45 @@
+==========
+USE-CASE
+==========
+We will be building a "Web Application to Manage Products" called "Product-Web".
+
+Using the Web Application, we will:
+    - Add new Products
+    - Lookup existing Products
+
+
+========================
+APPLICATION DESIGN
+=========================
+The Application will be build using three separate layers:
+    - Web layer
+    - Business logic layer
+    - Data acess layer
+
+Web layer:
+    - Servlets
+
+Business logic layer:
+    - POJO
+
+Data acess layer:
+    - POJO DAO
+
+NOTE: "Spring" will be used for dependency injection
+
+
+===========
+UNIT TESTS
+===========
+Unit tests will be written to cover all layers.
+
+
+==========================
+MAVEN PROJECTS DESIGN
+==========================
+[1] A "Standalone/JAR" MVN project called "Product-Services" will be created to anchor
+    - Business logic layer
+    - Data acess layer
+
+[2] A "Web/WAR" MVN project called "Product-Web" will be used to anchor the Web layer.
+    - The "Product-Services" project will be added as a dependency

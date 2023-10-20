@@ -39,15 +39,3 @@ groupId: com.example.vjk
 Just press enter.
 
 [9] You will now see a Maven project created in the Sample-Projects" folder.
-
-
-=========================================
-CREATE MAVEN PROJECT FROM COMMAND LINE
-==========================================
->> cd Sample-Projects
-
->> mvn archetype:generate \
--DgroupId="com.example.vjk" \
--DartifactId="hello-world" \
--DarchetypeArtifactId="maven-archetype-quickstart" \
--DinteractiveMode=false
