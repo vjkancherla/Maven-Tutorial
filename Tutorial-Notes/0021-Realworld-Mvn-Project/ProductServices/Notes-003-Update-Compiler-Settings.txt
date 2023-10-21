@@ -1,0 +1,29 @@
+=======================================
+UPDATE COMPILER SETTINGS IN POM
+=======================================
+
+[1] Open POM.xml for "product-services" project
+
+[2] Search for text "compiler-plugin"
+
+[3] Update 
+
+FROM
+====
+<plugin>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.8.0</version>
+</plugin>
+====
+
+TO
+====
+<plugin>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.8.0</version>
+    <configuration>
+        <source>1.8</source>
+        <target>1.8</target>
+    </configuration>
+</plugin>
+====

@@ -1,0 +1,30 @@
+>> mvn clean
+    Cleans the project by removing the target directory and all build artifacts.
+
+>> mvn compile
+    Compiles the source code of the project.
+
+>> mvn test
+    Runs the tests in the project.
+
+>> mvn package
+    Packages the compiled code into a distributable format, such as JAR or WAR.
+
+>> mvn install
+    Installs the project's artifact (usually a JAR) into the LOCAL MAVEN REPOSITORY. 
+    This allows other projects to use it as a dependency.
+
+>> mvn deploy
+    Deploys the project's artifact to a REMOTE REPOSITORY, making it available for others to use.
+
+>> mvn clean install
+    Cleans the project, compiles the code, runs tests, and installs the artifact in the local repository.
+
+>> mvn clean test
+    Cleans the project and runs tests.
+
+>> mvn clean package
+    Cleans the project, compiles the code, and packages it.
+
+>> mvn clean install -DskipTests
+    Execute the build process but skip running any tests.
