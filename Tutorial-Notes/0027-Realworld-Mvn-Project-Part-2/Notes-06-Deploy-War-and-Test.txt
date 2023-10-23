@@ -1,0 +1,16 @@
+==============================================
+DEPLOY MULTI MODULE PROJECT TO TOMCAT AND TEST
+==============================================
+
+[1] Once the project dependencies have been configured, a "mvn clean install" will result in a WAR file:
+    - Sample-Projects/multi-module-product-app/product-web/target/product-web.war
+
+
+[2] Right click on the WAR file and select "Run on Server". Then select "apache-tomcat-9.0.41"
+
+
+[3] Open a browser and navigate to: http://localhost:8080/product-web/product.html
+
+
+[4] To reteive the product details, go to: http://localhost:8080/product-web/DisplayProductDetailsServlet?id=1
+ 

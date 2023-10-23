@@ -1,0 +1,38 @@
+=============================
+MAVEN MULTI MODULE PROJECTS
+==============================
+- Maven multi-module projects, also known as multi-module builds or multi-project builds, are a way to manage and 
+  build multiple Maven projects as a single project.
+
+- In a multi-module project, you have a parent project that aggregates one or more child projects, allowing you to manage them collectively. 
+
+- Multi-module projects are particularly useful for large software projects where different parts of the application are 
+  developed and maintained separately but need to be built and managed together.
+
+
+Here are some key concepts and benefits of Maven multi-module projects:
+
+- Parent Project: 
+    - The parent project serves as the root of the multi-module project. 
+    - It contains configuration information and dependencies that are common to all child projects. 
+    - The parent project is defined in a POM (Project Object Model) file called pom.xml.
+
+- Child Projects: 
+    - Child projects are individual Maven projects that are part of the multi-module project. 
+    - Each child project has its own pom.xml file and may contain its own source code, resources, and configuration.
+
+- Dependency Management: 
+    - Child projects can depend on other child projects within the same multi-module project. 
+    - Maven manages these dependencies automatically, ensuring that the correct order of building and dependency resolution is maintained.
+
+- Build Lifecycle: 
+    - When you build the parent project, Maven automatically builds all of its child projects in the correct order 
+      according to their dependencies. 
+    - This simplifies the build process, as you can build the entire application with a single Maven command.
+
+- Inheritance and Overriding: 
+    - Child projects inherit configuration settings and dependencies from the parent project's POM. 
+    - However, you can also override and customize these settings in the child project's POM.
+
+- Reusability: 
+    - Child projects can be reused in other multi-module projects, making it easier to create and maintain libraries or common components.

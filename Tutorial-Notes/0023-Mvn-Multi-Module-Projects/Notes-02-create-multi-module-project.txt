@@ -1,0 +1,25 @@
+================================
+CREATING MULTI MODULE PROJECTS
+================================
+- To create a Maven multi-module project, you typically follow these steps:
+
+[1] Create a parent project by creating a directory structure with a pom.xml file at the root.
+[2] Create child projects within subdirectories, each with its own pom.xml file.
+[3] Define dependencies between child projects in the parent project's POM.
+[4] Use the modules element in the parent project's POM to list the child projects.
+[5] Build the parent project, and Maven will build all the child projects in the correct order.
+
+Here's a simplified example of a multi-module project structure:
+------
+my-multi-module-project/
+├── pom.xml (Parent POM)
+├── module1/
+│   ├── pom.xml (Child POM)
+│   └── src/
+├── module2/
+│   ├── pom.xml (Child POM)
+│   └── src/
+└── module3/
+    ├── pom.xml (Child POM)
+    └── src/
+-----

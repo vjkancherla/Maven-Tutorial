@@ -1,0 +1,44 @@
+============================================
+CREATE MULTI MODULE PROJECT WITH PARENT POM
+=============================================
+
+[1] Create a new folder - Sample-Projects/multi-module-product-app
+>> cd Sample-Projects
+
+>> mkdir multi-module-product-app
+
+
+[2] Move folders Sample-Projects/product-services and Sample-Projects/product-web into Sample-Projects/multi-module-product-app
+
+>> mv Sample-Projects/product-services Sample-Projects/multi-module-product-app
+
+>> mv Sample-Projects/product-web Sample-Projects/multi-module-product-app
+
+
+[3] Create a "parent" POM file in Sample-Projects/multi-module-product-app with the following content:
+
+====
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example.product</groupId>
+    <artifactId>product-app-parent</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>product-services</module>
+        <module>product-web</module>
+    </modules>
+</project>
+====
+
+NOTES: 
+    [1] The "<packaging>pom</packaging>" elemtent indicates that the parent project doesn't produce any executable artifacts 
+        but serves as a container for child modules.
+
+    [2] The <modules> element in the parent POM lists the names of the child modules. Each child module is specified as a 
+        relative path to its directory. This tells Maven which modules are part of the multi-module project.

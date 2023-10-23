@@ -1,0 +1,23 @@
+=======================================================
+DEFINE PROJECT DEPENDENCIES IN A MULTI-MODULE PROJECT
+=======================================================
+
+[1] The product-web module depends on classes in product-service module. Specify the dependency as follows:
+
+    Update Sample-Projects/multi-module-product-app/product-web/pom.xml:
+
+    ======
+    <dependencies>
+        <dependency>
+            <groupId>com.example.product</groupId>
+            <artifactId>product-services</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+    </dependencies>
+    ========
+
+[2] Run the build
+>> cd Sample-Projects/multi-module-product-app
+>> mv clean install
+
+[3] You will see that product-web now builds successfully.

@@ -1,0 +1,19 @@
+============================
+ADDING DEPENDENCIES IN POM
+============================
+
+ - The "Product-web" webapp project requires two external dependencies:
+    - eronimo-servlet_3.0_spec
+
+ - We add the following to POM.xml to allow Maven to download the dependencies and add them to classpath
+
+ ======
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-servlet_3.0_spec</artifactId>
+      <version>1.0</version>
+      <type>provided</type>
+    </dependency>
+  </dependencies>
+ =======

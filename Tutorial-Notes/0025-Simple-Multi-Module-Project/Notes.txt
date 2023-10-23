@@ -1,0 +1,102 @@
+===========================================================
+Simple real-world example of a Maven multi-module project
+===========================================================
+
+Use-Case: 
+    Imagine you are developing a simple e-commerce application with two main components: 
+        - a "ShoppingCart" module 
+        - a "ProductCatalog" module
+    The ShoppingCart module depends on the ProductCatalog module to fetch product information.
+
+
+Step 1: Create the Child Projects
+------------------------------------
+>> cd Sample-Projects
+
+>> mkdir multi-module-app
+
+>> cd multi-module-app
+
+>> mkdir e-commerce-app
+
+>> cd e-commerce-app
+
+Create the "ShoppingCart" module 
+>> mvn archetype:generate -DgroupId=com.example -DartifactId=shopping-cart -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+Create the "ProductCatalog" module
+>> mvn archetype:generate -DgroupId=com.example -DartifactId=product-catalog -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+
+Step 2: Define the Parent Project
+------------------------------------
+>> cd Sample-Projects/multi-module-app
+
+>> mkdir e-commerce-parent
+
+>> cd e-commerce-parent
+
+Inside the e-commerce-parent directory, create a pom.xml file for the parent project:
+
+====
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>e-commerce-parent</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>../e-commerce-app/shopping-cart</module>
+        <module>../e-commerce-app/product-catalog</module>
+    </modules>
+</project>
+====
+
+
+Step 3: Update Child Projects' POM.xml
+-----------------------------------------
+- In each child project's pom.xml, you should add a <parent> element that references the parent project.
+
+[1] In the "ShoppingCart" module's pom.xml:
+
+Remove line: <version>1.0-SNAPSHOT</version>
+
+Replace line: <groupId>com.example</groupId> 
+WITH
+======
+<parent>
+    <groupId>com.example</groupId>
+    <artifactId>e-commerce-parent</artifactId>
+    <version>1.0.0</version>
+</parent>
+======
+
+[2] In the "ProductCatalog" module's pom.xml:
+
+Remove line: <version>1.0-SNAPSHOT</version>
+
+Replace line: <groupId>com.example</groupId> 
+WITH
+=======
+<parent>
+    <groupId>com.example</groupId>
+    <artifactId>e-commerce-parent</artifactId>
+    <version>1.0.0</version>
+</parent>
+=======
+
+
+Step 3: Build the Multi-Module Project
+----------------------------------------
+- Now that you've set up the parent project and child modules, you can build the entire multi-module project as one. 
+
+In the root directory (e-commerce-parent), run:
+
+>> mvn install
+
+Maven will build both the "ShoppingCart" and "ProductCatalog" modules in the correct order, and any dependencies between them will be resolved automatically.

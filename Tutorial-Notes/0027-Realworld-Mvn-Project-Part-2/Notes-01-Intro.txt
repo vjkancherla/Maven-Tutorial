@@ -1,0 +1,14 @@
+====================
+MULTI MODULE INTRO
+=====================
+
+Previously, in Tutorial-Notes/0021-Realworld-Mvn-Project-Part-1, we created two standalone projects:
+ - product-services [jar]
+ - product-web [webapp]
+
+ We were able to build product-services without issues.
+
+ However, we were not able to build product-web because the Servlets reference the classes defined in product-services, 
+ but have not defined any project dependencies (i.e., how does product-web know about product-services?).
+
+ The next step is to create a multi-module maven project and defined the project dependencies.

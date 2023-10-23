@@ -1,0 +1,30 @@
+================================
+BUILD THE MULTI MODULE PROJECT
+================================
+
+[1] We will build the multi-module project from the directory in which the Parent POM exists (Sample-Projects/multi-module-product-app)
+
+>> cd Sample-Projects/multi-module-product-app
+
+>> mvn clean install
+
+What Maven does at this time is:
+    - Scans and creates a graph of the build order, based on project dependencies. 
+      You will see this under "Reactor Build Order:" in the console output
+
+    =====
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Reactor Build Order:
+    [INFO]
+    [INFO] product-app-parent                                                 [pom]
+    [INFO] product-services                                                   [jar]
+    [INFO] product-web Maven Webapp                                           [war]
+    =====
+
+    - Build the "product-services" project, creates a jar and stores it in the local repo (~/.m2/..)  
+      With this, the "product-services" project is available to be used as a dependency for other projects.
+    
+
+[2] Note that we wil still see build errors when "product-web" is being built. 
+    This is becuase we not yet defined the dependency between product-web and product-service.
+    We will do that next.
