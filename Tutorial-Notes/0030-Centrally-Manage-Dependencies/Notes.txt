@@ -1,0 +1,60 @@
+================================================
+CENTRALLY MANAGE DEPENDENCIES IN THE PARENT POM
+=================================================
+- The <dependencyManagement> section in a PARENT Maven POM file is used for centralized management of dependencies 
+  for a multi-module project (or even single-module projects in some cases). 
+  
+- It allows you to define and manage versions of dependencies in a central location, ensuring consistency across multiple modules.
+
+Here are some key aspects of <dependencyManagement>:
+
+- Centralized Version Management:
+    - When you have multiple modules with shared dependencies, it's helpful to ensure that all modules use the same version of 
+     a particular dependency.
+    - By defining the version in the parent POM's <dependencyManagement> section, child modules can refer to the dependency 
+      without specifying the version. The version they'll inherit will be the one specified in the parent POM.
+
+- No Actual Dependencies:
+    - Simply defining a dependency inside <dependencyManagement> does not mean that the dependency will be added to all child modules.
+    - It's more like a template. Child modules need to explicitly define that they want to use a dependency. 
+      When they do, they inherit the version (and other attributes) from the parent POM.
+
+- Overriding Dependency Attributes:
+    - In addition to version numbers, you can define other attributes of a dependency in the <dependencyManagement> section, 
+      such as its scope.
+    - Child modules can still override these attributes if needed.
+
+- Import Scope and BOM (Bill of Materials):
+    - Within <dependencyManagement>, the "import" scope allows a project to import dependency versions from another 
+      project's <dependencyManagement> section. This is often used with BOMs.
+    - A BOM is a special kind of POM file that specifies a list of dependencies and their versions, providing a standard set of versions 
+      for a set of artifacts.
+
+
+EXAMPLE: 
+    - Imagine you have a multi-module project with a parent POM and two child modules (module A and module B). 
+      Both child modules use library X.
+
+      Parent's POM.xml
+      =============
+        <dependencyManagement>
+            <dependencies>
+                <dependency>
+                    <groupId>com.example</groupId>
+                    <artifactId>X</artifactId>
+                    <version>1.0.0</version>
+                </dependency>
+            </dependencies>
+        </dependencyManagement>
+      =============
+
+      In module A's and module B's POM:
+      ====
+        <dependencies>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>X</artifactId>
+            </dependency>
+        </dependencies>
+      ====
+      Notice that in the child modules' POMs, the version for library X is not specified. It's inherited from the parent POM.
