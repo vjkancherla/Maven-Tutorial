@@ -1,0 +1,114 @@
+===============
+MAVEN PROFILES
+===============
+- With profiles, you can customize builds for different environments, configurations, or purposes. 
+
+- They can be activated in various ways, such as by operating system parameters, environmental variables, or explicitly via command line.
+
+
+EXAMPLE-1:
+    Let's look at a common use-case for profiles: having different configurations for development and production.
+
+    [1] Defining Profiles:
+            In the project's pom.xml, you can define profiles as follows:
+
+            ----
+            <profiles>
+                <!-- Development Profile -->
+                <profile>
+                    <id>dev</id>
+                    <activation>
+                        <activeByDefault>true</activeByDefault> <!-- This profile is active by default -->
+                    </activation>
+                    <properties>
+                        <environment>dev</environment>
+                    </properties>
+                    <dependencies>
+                        <!-- Add any dev-specific dependencies here -->
+                    </dependencies>
+                </profile>
+
+                <!-- Production Profile -->
+                <profile>
+                    <id>prod</id>
+                    <properties>
+                        <environment>prod</environment>
+                    </properties>
+                    <dependencies>
+                        <!-- Add any prod-specific dependencies here -->
+                    </dependencies>
+                </profile>
+            </profiles>
+            ----
+
+    [2] Usage:
+            You can use the properties set within a profile anywhere in the POM. For example:
+
+            ----
+            <build>
+                <finalName>my-app-${environment}</finalName>
+            </build>
+            ----
+
+            Depending on the active profile, the generated artifact will be named either my-app-dev.jar or my-app-prod.jar.
+
+    [3] Activation:
+            By default, the dev profile is active because of <activeByDefault>true</activeByDefault>.
+
+            To activate the prod profile, you'd use:
+            >> mvn clean install -Pprod
+
+
+EXAMPLE-2: Using Maven profiles to manage different configurations like application.properties for development and production
+
+    [1] Directory Structure:
+        -----
+        src/
+        └── main/
+            └── resources/
+                ├── dev/                       # Development configuration files
+                |   └── application.properties
+                └── prod/                      # Production configuration files
+                    └── application.properties
+        -----
+
+    [2] Define Maven Profiles:
+        ----
+        <profiles>
+            <!-- Development Profile -->
+            <profile>
+                <id>dev</id>
+                <activation>
+                    <activeByDefault>true</activeByDefault>
+                </activation>
+                <build>
+                    <resources>
+                        <!-- Include everything under the dev directory -->
+                        <resource>
+                            <directory>src/main/resources/dev</directory>
+                            <filtering>true</filtering>
+                        </resource>
+                    </resources>
+                </build>
+            </profile>
+
+            <!-- Production Profile -->
+            <profile>
+                <id>prod</id>
+                <build>
+                    <resources>
+                        <!-- Include everything under the prod directory -->
+                        <resource>
+                            <directory>src/main/resources/prod</directory>
+                            <filtering>true</filtering>
+                        </resource>
+                    </resources>
+                </build>
+            </profile>
+        </profiles>
+        -----
+
+    [3] Profile Activation:
+        >> mvn clean install -Pdev
+
+        >> mvn clean install -Pprod

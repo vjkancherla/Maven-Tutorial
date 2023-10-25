@@ -1,0 +1,61 @@
+========================================
+CENTRALLY MANAGE PLUGINS IN PARENT POM
+=========================================
+
+- In Maven, the <pluginManagement> element within the POM file (Project Object Model) serves a purpose similar to the 
+  <dependencyManagement> element, but for plugins. It allows you to manage plugin versions and configurations for your project in 
+  a central place, which is especially useful in multi-module builds.
+
+Here's what the <pluginManagement> section does:
+
+[1] Centralized Version Management:
+    Just like with <dependencyManagement>, if you have a parent POM with multiple child modules, specifying plugin versions 
+    in the parent POM's <pluginManagement> section ensures that all child modules use the same versions of plugins. 
+    This centralizes and standardizes the plugin versions across modules.
+
+[2] Configuration Management:
+    Apart from the version, you can also specify common configuration parameters for plugins. This can be very useful if
+    multiple modules use the same plugin with the same (or similar) configurations.
+
+[3] No Direct Activation:
+    Merely defining a plugin inside <pluginManagement> does not activate or run the plugin. Child modules or the POM 
+    where <pluginManagement> is defined still need to reference the plugin in the <build><plugins> section to actually use it. 
+    The <pluginManagement> section just provides a template.
+
+
+EXAMPLE:
+Suppose in a parent POM you want all your child modules to use version 3.8.1 of the maven-compiler-plugin and you want to 
+set the source and target Java version to 11.
+
+Parent pom.xml
+=====
+<build>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+</build>
+======
+
+In the child module's POM, you'd then reference the plugin without needing to specify the version or configuration again:
+
+Child's pom.xml
+=====
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
+=====
