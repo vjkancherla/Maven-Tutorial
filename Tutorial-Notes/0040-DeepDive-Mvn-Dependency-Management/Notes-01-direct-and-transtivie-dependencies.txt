@@ -1,0 +1,35 @@
+======================================
+DIRECT AND TRANSITIVE DEPENDENCIES
+======================================
+
+READ THIS: https://reflectoring.io/maven-bom/
+
+Direct Dependencies:
+    - These are dependencies that you explicitly add to your project's pom.xml. 
+    - They represent libraries or modules that you directly use in your project.
+
+    EXAMPLE:
+        -----
+        <dependencies>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+            </dependency>
+        </dependencies>
+        -----
+
+
+Transitive Dependencies:
+    - These are the dependencies that your direct dependencies require to function. 
+    - A project that we include as a dependency in our project, like the logging library above, can declare its own dependencies in a pom.xml file. 
+    - Maven will automatically pull in transitive dependencies to ensure that everything your project needs is available.
+
+    How It Works: 
+        - Suppose Library A depends on Library B. 
+        - If your project adds Library A as a direct dependency, Maven will automatically fetch Library B for you 
+          because it's a transitive dependency of Library A.
+
+    Issues: 
+        - Transitive dependencies can lead to dependency conflicts. For example, if two of your direct dependencies 
+          both require DIFFERENT versions of the same transitive dependency, Maven has to resolve this conflict.

@@ -1,0 +1,73 @@
+==============================
+JaCoCo TEST COVERAGE PLUGIN
+==============================
+
+- JaCoCo is a code coverage reports generator for Java projects.
+
+
+Maven Source Project To Use For Testing
+-----------------------------------------
+
+>> cd Sample-Projects
+
+>> cp -Rp multi-module-product-app product-app-with-jacoco
+
+
+Setup/Enable JaCoCo PLUGIN
+-------------------------------
+[1] Open Sample-Projects/product-app-with-jacoco/product-services/pom.xml
+
+[2] Add the following code block:
+    ----
+    <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.7</version>
+        <executions>
+            <execution>
+                <goals>
+                    <!--Execute this goal to prep/setup JaCoCo during Mvn's "Initialize" phase (The very first phase)-->
+                    <goal>prepare-agent</goal>
+                </goals>
+            </execution>
+            <execution>
+                <id>report</id>
+                <phase>test</phase>
+                <goals>
+                    <!--Execute this goal, to generate code coverage reports, right after the Mnv's "test" phase completion-->
+                    <goal>report</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin> 
+    ----
+
+NOTE: The above code block should be added to:
+    <build>
+        <plugins>
+            <!-- ADD HERE -->
+        </plugins>
+    <build>
+
+    NOT TO:
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- NOT HERE -->
+            </plugins
+        </pluginManagement>
+    <build>
+
+
+Run Maven Commands To Generate Code Coverage Reports
+--------------------------------------------------------
+
+>> cd Sample-Projects/product-app-with-jacoco/product-services
+
+>> mvn clean verify
+
+
+Examine the Generated JaCoCo Code Coverage Reports
+-------------------------------------------------------
+- Open the following file in a web browser:
+    Sample-Projects/product-app-with-jacoco/product-services/target/site/jacoco/index.html

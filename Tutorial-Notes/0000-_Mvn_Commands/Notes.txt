@@ -21,10 +21,16 @@
     Cleans the project, compiles the code, runs tests, and installs the artifact in the local repository.
 
 >> mvn clean test
-    Cleans the project and runs tests.
+    Cleans the project and runs unti tests.
 
 >> mvn clean package
     Cleans the project, compiles the code, and packages it.
 
 >> mvn clean install -DskipTests
     Execute the build process but skip running any tests.
+
+>> mvn clean verify
+    Execute units tests and packages app and runs integration tests
+
+>> mvn dependency:tree -Dverbose=true
+    List all the dependencies including the transitive ones

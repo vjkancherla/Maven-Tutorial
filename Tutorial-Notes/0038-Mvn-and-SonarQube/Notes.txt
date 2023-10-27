@@ -1,0 +1,66 @@
+=========================================
+MAVEN AND SONARQUBE FOR CODE ANALYSIS
+==========================================
+
+Prepare SonarQube
+--------------------
+[1] Login to SonarQube and create a new project.
+
+    - select "Manually"
+    - "Project Display Name" : "Maven"
+    - "Project Key": "12345"
+    - "Main branch name": main
+    
+Save the API Token: sqp_4ac35a441174e327fdc50cd00d8a87f40e8a7670
+
+
+
+Configure Maven Project 
+---------------------------
+[1] Centrally configure SonarQube plugin, with a pinned version, in PARENT POM file:
+    
+    edit: Sample-Projects/product-app-and-sonarqube/pom.xml
+    
+    -----
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.4.0.905</version>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+    -----
+
+
+////////////////////////
+/////////////////////////
+THIS IS NOT REQUIRED
+//////////////////////////
+///////////////////////////
+[2] Update the child POMs and add the plugin:
+
+    edit: Sample-Projects/product-app-and-sonarqube/product-services/pom.xml 
+          and
+          Sample-Projects/product-app-and-sonarqube/product-web/pom.xml
+
+    -----
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+    -----
+
+
+[3] Run the build:
+    >> cd Sample-Projects/product-app-and-sonarqube
+
+    >> mvn clean verify sonar:sonar \                                                                                 
+  -Dsonar.projectKey=Maven \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=sqp_4ac35a441174e327fdc50cd00d8a87f40e8a7670
