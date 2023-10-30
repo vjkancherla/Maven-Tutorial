@@ -1,0 +1,15 @@
+==================================
+MAVEN's BILL OF MATERIALS (BOM)
+==================================
+
+READ THIS: https://reflectoring.io/maven-bom/
+
+- The Bill Of Material is a special POM file that groups dependency versions that are known to be valid and tested to work together. 
+
+- This will reduce the developers' pain of having to test the compatibility of different versions and reduce the chances to have version mismatches.
+
+- The BOM file has:
+   - a pom packaging type: <packaging>pom</packaging>.
+   - a dependencyManagement section that lists the dependencies of a project.
+
+

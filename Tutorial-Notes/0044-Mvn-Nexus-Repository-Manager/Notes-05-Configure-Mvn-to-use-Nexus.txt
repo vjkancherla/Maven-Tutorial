@@ -1,0 +1,53 @@
+================================================
+USING NEXUS (Open Source) AS REPOSITORY MANAGER
+================================================
+
+[1] Locate or Create the settings.xml File:
+    If it does not exist, you can create a settings.xml file in the .m2 directory (~/.m2 on Unix-like systems or C:\Users\<username>\.m2 on Windows).
+
+NOTE: If you DO NOT want to update the global settings.xml file in the .m2 directory, or want to test with a different settings.xml, 
+      you can do the following:
+      >> mvn --settings /path/to/your/settings.xml clean install
+
+[2] Add Nexus Repository Configuration:
+    Update settings.xml to look like below:
+
+    =====
+    <?xml version="1.0" encoding="UTF-8"?>
+    <settings xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+
+        <servers>
+            <server>
+                <id>nexus-snapshots</id>
+                <username>nexus-user</username>
+                <password>nexus123</password>
+            </server>
+            <server>
+                <id>nexus-releases</id>
+                <username>nexus-user</username>
+                <password>nexus123</password>
+            </server>
+        </servers>
+
+        <mirrors>
+            <mirror>
+                <id>central</id>
+                <name>central</name>
+                <url>
+                    http://localhost:8081/repository/my-mvn-repo-group/
+                </url>
+                <mirrorOf>*</mirrorOf>
+            </mirror>
+        </mirrors>
+    </settings>
+    =====
+
+    NOTE-1: the "<server>" block configures authentication to Nexus
+
+    **IMP** The MIRROR Element**:
+        - Allows you to specify that all requests to a repository (or set of repositories) should be redirected to another repository.
+        - Ensures that all developers in your organization use a centralized repository, such as Nexus , to retrieve dependencies. 
+        - Even if project POMs contain a different url (for eg: maven central), everything will be routed through Nexus
+

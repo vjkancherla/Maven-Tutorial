@@ -1,0 +1,17 @@
+================================================
+USING NEXUS (Open Source) AS REPOSITORY MANAGER
+================================================
+
+CREATE A NON-ADMIN/REGULAR NEXUS USER
+---------------------------------------
+- We will create a new, non-admin/regular, user that will be used to upload/download artefacts to/from Nexus from Maven.
+
+[1] login to the Nexux console as admin user (admin/admin123)
+
+[2] Click on Setting ("cog wheel" icon) > Security > Users > Create Local User 
+
+[3] Create a new user with the following details:
+    id: nexus-user
+    password: nexus123
+    Status: active
+    Roles: nx-anonymous

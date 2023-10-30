@@ -1,0 +1,35 @@
+================================================
+USING NEXUS (Open Source) AS REPOSITORY MANAGER
+================================================
+
+RUNNING NEXUS ON DOCKER
+---------------------------
+
+[1] Run nexus on docker
+
+>> docker run -d -p 8081:8081 --name nexus \
+-v /Users/vijaykancherla/Downloads/nexus-volume:/nexus-data \
+--network=k3d-mycluster \
+--ip 172.19.0.10 \
+-e TZ=Asia/Kolkata \
+sonatype/nexus3
+
+
+[2] Login to the nexus console: http://localhost:8081
+
+You will be shown the conosle as a "logged-off" user.
+
+
+[3] Login as Admin user
+    - grab the initial Admin password by running the following command:
+    - >> docker container exec nexus cat /nexus-data/admin.password
+            b3f91edd-a13e-4d07-b5ce-79b22fafd054
+
+    Now, login using admin/b3f91edd-a13e-4d07-b5ce-79b22fafd054
+
+    You will be prompted to complete the "setup wizard"
+
+        - set new admin password to "admin123"
+        - "Enable anonymous access"
+
+

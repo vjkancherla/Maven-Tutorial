@@ -1,0 +1,39 @@
+================================================
+USING NEXUS (Open Source) AS REPOSITORY MANAGER
+================================================
+
+TYPES OF NEXUS REPOSITORIES THAT CAN BE USED WITH MAVEN
+----------------------------------------------------------
+
+[1] Proxy Repositories [Type: Proxy]: 
+    - These are set up to proxy an external repository, allowing you to cache artifacts from a remote repository like Maven Central. 
+    - When Maven requests an artifact, if it is not available in the local Nexus cache, Nexus will fetch it from the remote repository 
+      and then store it in the cache for future use.
+
+    - Nexus provides the following, default, pre-configured, proxy repository:
+        - "maven-central"
+
+
+[2] Hosted Repositories [Type: Hosted]: 
+    - These are used to store artifacts that are produced internally in your organization. 
+    - A hosted repository is a repository that is hosted by the Nexus Repository Manager itself.
+
+    - Nexus provides the following, default, pre-configured, hosted repositories:
+        - "maven-release"
+            - This hosted repository is intended for release artifacts
+            - The version numbers, in the POM's "version" property, of release artifacts do not have any timestamp or "SNAPSHOT" qualifiers. 
+            - For example, <version>2.5.3</version>, <version>1.0.3</version> would be considered release versions.
+        
+        - "maven-snapshots"
+            - This hosted repository is designed for snapshot artifacts. 
+            - The version numbers, in the POM's "version" property, of release artifacts have a timestamp or "SNAPSHOT" qualifiers. 
+            - For example, <version>2.5.3-SNAPSHOT</version>, <version>1.0.3-SNAPSHOT</version> would be considered snapshots versions.
+
+
+[3] Group Repositories [Type: Group]: 
+    - These are logical repositories that group one or more repositories into a single repository. 
+    - This can include other hosted repositories and proxy repositories.
+    - Instead of checking multiple repositories, Maven will only need to reference the group repository, 
+      and Nexus will manage the retrieval of artifacts from the appropriate member repositories.
+
+
