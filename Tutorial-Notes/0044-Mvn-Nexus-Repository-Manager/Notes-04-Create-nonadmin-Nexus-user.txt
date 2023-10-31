@@ -8,10 +8,16 @@ CREATE A NON-ADMIN/REGULAR NEXUS USER
 
 [1] login to the Nexux console as admin user (admin/admin123)
 
-[2] Click on Setting ("cog wheel" icon) > Security > Users > Create Local User 
+[2] Create a new "Role" with privilges to download/upload from/to all repositories
+    - Click on Setting ("cog wheel" icon) > Security > Roles > Create Role
+        id: custom-role
+        name: custom-role
+        privileges: nx-repository-view-*-*-*, nx-component-upload
+
+[3] Click on Setting ("cog wheel" icon) > Security > Users > Create Local User 
 
 [3] Create a new user with the following details:
     id: nexus-user
     password: nexus123
     Status: active
-    Roles: nx-anonymous
+    Roles: custom-role

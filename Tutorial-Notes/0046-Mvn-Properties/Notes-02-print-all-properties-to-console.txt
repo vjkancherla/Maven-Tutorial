@@ -1,0 +1,57 @@
+==================
+MVN PROPERTIES
+==================
+
+PRINT ALL AVAILABLE PROPERTIES TO CONSOLE
+---------------------------------------------
+
+Add the following to PARENT's POM.XML:
+
+NOTE: WE ARE INTENTIONALLY USING AN OLD VERSION (V1.7) OF THE BELOW PLUGIN.
+
+    ------
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <echoproperties />
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    ------
+
+From the parent POM's directory, run:
+>> mvn clean validate
+**Ignore build errors**
+
+As MVN builds each project (parent and child) you will see a bunch of "<echoproperties>" statements being logged.
+
+===
+<truncated>....
+[echoproperties] project.artifactId=product-services
+[echoproperties] project.build.directory=/Users/vijaykancherla/Downloads/DevOps-Projects/Maven-Tutorial/Sample-Projects/product-app-with-properties/product-services/target
+[echoproperties] project.build.outputDirectory=/Users/vijaykancherla/Downloads/DevOps-Projects/Maven-Tutorial/Sample-Projects/product-app-with-properties/product-services/target/classes
+[echoproperties] project.build.sourceDirectory=/Users/vijaykancherla/Downloads/DevOps-Projects/Maven-Tutorial/Sample-Projects/product-app-with-properties/product-services/src/main/java
+[echoproperties] project.build.sourceEncoding=UTF-8
+[echoproperties] project.build.testOutputDirectory=/Users/vijaykancherla/Downloads/DevOps-Projects/Maven-Tutorial/Sample-Projects/product-app-with-properties/product-services/target/test-classes
+[echoproperties] project.build.testSourceDirectory=/Users/vijaykancherla/Downloads/DevOps-Projects/Maven-Tutorial/Sample-Projects/product-app-with-properties/product-services/src/test/java
+[echoproperties] project.groupId=com.example.product
+[echoproperties] project.name=product-services
+[echoproperties] project.packaging=jar
+[echoproperties] project.version=0.0.1
+<truncated>....
+===

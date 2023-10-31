@@ -2,3 +2,43 @@
 USING NEXUS (Open Source) AS REPOSITORY MANAGER
 ================================================
 
+Create the Mvn Project
+---------------------------
+>> cd Sample-Projects
+
+>> cp -Rp multi-module-product-app product-app-with-nexus
+
+
+Create the settings.xml (Repos config) file 
+---------------------------------------------
+>> cd Sample-Projects/product-app-with-nexus
+
+>> create a new file called settings.xml with the content described in Tutorial-Notes/0044-Mvn-Nexus-Repository-Manager/Notes-05-Configure-Mvn-to-use-Nexus.txt
+
+
+Update POM.XMLs
+-----------------
+Update the POM.XML of parent and child projects and add the following code:
+    - Sample-Projects/product-app-with-nexus/product-services/pom.xml
+    - Sample-Projects/product-app-with-nexus/product-web/pom.xml
+    - Sample-Projects/product-app-with-nexus/pom.xml
+
+    ------
+    <distributionManagement>
+        <repository>
+        <id>nexus-releases</id>
+        <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+        <id>nexus-snapshots</id>
+        <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    ------
+
+
+Run MVN build
+-----------------
+>> cd Sample-Projects/product-app-with-nexus/
+
+>> mvn --settings settings.xml clean deploy

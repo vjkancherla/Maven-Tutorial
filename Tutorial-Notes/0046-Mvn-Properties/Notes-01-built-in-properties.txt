@@ -1,0 +1,53 @@
+========================
+MVN PROPERTIES
+========================
+- Maven properties are a key feature in pom.xml files that allow for the customization and configuration of the build process. 
+- They can be used to inject dynamic values into the Maven build lifecycle and can be defined in various scopes, 
+  such as within the pom.xml itself, user settings, environment variables, or command-line parameters.
+
+
+BUILT-IN PROPERTIES
+---------------------
+- Built-in Maven properties are predefined variables that you can use to refer to specific states or settings of the 
+  Maven environment within your project's pom.xml, profiles.xml, or settings.xml. 
+- They provide a convenient way to access project-related information without hard-coding values that may change from 
+  one environment to another or as the project evolves.
+
+
+BUILT-IN "PROJECT" PROPERTIES
+------------------------------
+These properties refer to the aspects of your Maven project as defined in the pom.xml file:
+
+${project.groupId}: The group ID of the project.
+${project.artifactId}: The artifact ID of the project.
+${project.version}: The version of the project.
+${project.name}: The name of the project.
+${project.description}: The description of the project.
+${project.build.finalName}: The final name of the file created when the built project is packaged.
+
+
+BUILT-IN "SETTINGS" PROPERTIES
+------------------------------
+These properties refer to settings from Maven's settings.xml file:
+
+${settings.localRepository}: The path to the local repository on your machine.
+
+
+BUILT-IN "ENVIRONMENT" PROPERTIES
+------------------------------------
+These allow you to access system environment variables:
+
+${env.JAVA_HOME}: The path to the Java SDK installation in the system environment.
+${env.HOME}: The path to the user home directory.
+
+
+
+BUILT-IN "JAVA" PROPERTIES
+------------------------------------
+These properties expose values from the Java system properties:
+
+${java.version}: The version of Java being used to run Maven.
+${java.vendor}: The vendor of the Java SDK.
+${os.name}: The name of the operating system Maven is running on.
+${os.arch}: The architecture of the operating system.
+${os.version}: The version of the operating system.
