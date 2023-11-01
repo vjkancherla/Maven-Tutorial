@@ -82,7 +82,7 @@ ion-test):
     The verify phase checks the project's final artifact to ensure it meets quality and validation criteria. This phase typically includes checks for code quality, code coverage, and other quality-related metrics.
 
 22. Install (install):
-    In the install phase, the project's artifact is installed into the local Maven repository, making it available for other projects to use.
+    In the install phase, the project's artifact is installed into the LOCAL Maven repository, making it available for other projects to use.
 
 23. Deploy (deploy):
-    The deploy phase deploys the project's artifact to a remote repository, typically used for sharing artifacts with other team members or deploying them to a central repository.
+    The deploy phase deploys the project's artifact to a REMOTE repository, typically used for sharing artifacts with other team members or deploying them to a central repository.

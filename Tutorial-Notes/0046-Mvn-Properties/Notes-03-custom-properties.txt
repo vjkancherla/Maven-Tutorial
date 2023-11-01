@@ -1,0 +1,33 @@
+==================
+MVN PROPERTIES
+==================
+
+- Custom properties allow users to define their own properties for various purposes, such as parameterizing configuration or 
+  making the build process more flexible. These properties can then be used elsewhere in the POM, in plugins, and even in resources.
+
+
+EXAMPLE: Defining Custom Properties in the PARENT POM 
+    -----
+    <properties>
+        <my.war.file.name>My-Super-WAR-File</my.custom.property>
+        <java.version>1.8</java.version>
+    </properties>
+    -----
+
+
+EXAMPLE: Usage
+    ----
+    <build>
+        <finalName>${my.war.file.name}</finalName>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+            </configuration>
+        </plugin>
+    <build>
+    ----
