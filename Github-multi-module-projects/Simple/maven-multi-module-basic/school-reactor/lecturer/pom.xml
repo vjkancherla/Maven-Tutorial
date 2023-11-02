@@ -15,7 +15,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.parent</groupId>
+			<groupId>com.school</groupId>
 			<artifactId>models</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
