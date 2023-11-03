@@ -1,0 +1,135 @@
+=======================================================
+CREATE AN EXECUTABLE JAR FROM A MULTI-MODULE PROJECT
+=======================================================
+
+We will use the MAVEN ASSEMBLY PLUGIN to generate an executable JAR.
+
+MULTI-MODULE PROJECT
+--------------------------
+- We have a multi-module project as below:
+
+    -------
+    sample-projects/school-reactor-app
+        - school-reactor-parent
+            - lecturers
+            - models
+            - students
+            - web-api
+    --------
+
+    ------------
+    school-reactor-app
+    └── school-reactor-parent
+        ├── lecturers
+        │   ├── pom.xml
+        │   └── src
+        │       └── main
+        │           └── java
+        │               └── com
+        │                   └── school
+        │                       └── lecturer
+        │                           └── LecturerController.java
+        ├── models
+        │   ├── pom.xml
+        │   └── src
+        │       └── main
+        │           └── java
+        │               └── com
+        │                   └── model
+        │                       ├── lecturer
+        │                       │   └── LecturerModel.java
+        │                       └── student
+        │                           └── StudentModel.java
+        ├── pom.xml
+        ├── students
+        │   ├── pom.xml
+        │   └── src
+        │       └── main
+        │           └── java
+        │               └── com
+        │                   └── school
+        │                       └── student
+        │                           └── StudentController.java
+        └── web-api
+            ├── pom.xml
+            └── src
+                ├── assembly
+                │   ├── jar.xml
+                │   └── zip.xml
+                └── main
+                    └── java
+                        └── com
+                            └── school
+                                └── Application.java
+    ---------
+
+
+PROJECT DEPENDENCIES
+-------------------------
+    - lecturers -> depends-on -> models
+    - students -> depends-on -> models
+    - web-api -> depends-on -> lecturers + students
+
+
+THE ENTRY POINT / JAVA MAIN CLASS
+------------------------------------
+The entry point, the Java class with the "main()" method, is web-api/src/main/java/com/school/Application.java
+
+
+USING MAVEN ASSEMBLY PLUGIN
+-------------------------------
+https://www.baeldung.com/executable-jar-with-maven
+
+The Apache Maven Assembly Plugin allows users to aggregate the project output along with its dependencies, modules, 
+site documentation, and other files into a single, runnable package.
+
+Add the following to web-api/pom.xml
+
+    ------------
+    <plugins>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>single</goal>
+                  </goals>
+                  <configuration>
+                      <archive>
+                      <manifest>
+                          <mainClass>
+                              com.school.Application
+                          </mainClass>
+                      </manifest>
+                      </archive>
+                      <descriptorRefs>
+                          <descriptorRef>jar-with-dependencies</descriptorRef>
+                      </descriptorRefs>
+                  </configuration>
+              </execution>
+          </executions>
+      </plugin>
+    </plugins>
+    ------------
+
+Maven Assembly Plugin will automatically copy all required dependencies into a jar file. 
+
+Output in our example will be named as web-api-1.0-SNAPSHOT-jar-with-dependencies.jar.
+
+
+RUNNING THE EXECUTABLE JAR
+----------------------------
+>> cd Sample-Projects/school-reactor-app/school-reactor-parent
+
+>> mvn clean package
+
+>> java -jar web-api/target/web-api-1.0-SNAPSHOT-jar-with-dependencies.jar 
+
+
+
+
+
+
+
