@@ -34,3 +34,8 @@
 
 >> mvn dependency:tree -Dverbose=true
     List all the dependencies including the transitive ones
+
+
+DRY-RUN
+>> mvn clean package -DdryRun=true
+>> mvn -T 1C clean install -DskipTests -DdryRun=true

@@ -4,6 +4,8 @@ MAVEN AND SONARQUBE FOR CODE ANALYSIS
 
 Prepare SonarQube
 --------------------
+Pre-Req: SonarQube must be running locally on Docker. See Monorepo-X on how to do it.
+
 [1] Login to SonarQube and create a new project.
 
     - select "Manually"
@@ -34,11 +36,6 @@ Configure Maven Project
     -----
 
 
-////////////////////////
-/////////////////////////
-THIS IS NOT REQUIRED
-//////////////////////////
-///////////////////////////
 [2] Update the child POMs and add the plugin:
 
     edit: Sample-Projects/product-app-and-sonarqube/product-services/pom.xml 
