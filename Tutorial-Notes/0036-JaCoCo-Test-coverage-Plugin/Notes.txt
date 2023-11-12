@@ -27,7 +27,7 @@ Setup/Enable JaCoCo PLUGIN
             <execution>
                 <goals>
                     <!--Execute this goal to prep/setup JaCoCo during Mvn's "Initialize" phase (The very first phase)-->
-                    <!--Note that we have specidied a 'phase' for this goal. Hence, "Initialize" phase is inferred -->
+                    <!--Note that we have NOT specified a 'phase' for this goal. Hence, "Initialize" phase is inferred -->
                     <goal>prepare-agent</goal>
                 </goals>
             </execution>

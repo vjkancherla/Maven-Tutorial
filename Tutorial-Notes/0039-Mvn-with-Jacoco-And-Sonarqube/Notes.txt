@@ -1,0 +1,28 @@
+==================================
+MAVEN WITH JACOCO AND SONARQUBE
+==================================
+
+USECASE:
+- Use mvn + JacoCo to generate test coverage report
+- Use mvn + Sonarqube to 
+    - anaylse JaCoCo's test coverage report
+    - anaylse Application source code
+
+
+SAMPLE PROJECT:
+- Sample-Projects/product-app-with-jacoco-and-sonarqube
+
+
+MAVEN COMMAND:
+>> cd Sample-Projects/product-app-with-jacoco-and-sonarqube
+
+>> mvn clean verify sonar:sonar \
+-Dsonar.projectKey=Maven \
+-Dsonar.host.url=http://localhost:9000 \
+-Dsonar.login=sqp_4ac35a441174e327fdc50cd00d8a87f40e8a7670
+
+
+SONARQUBE:
+- login to Sonarqube console 
+- click on "product-app-parent" project
+- nagivate to "measures" tab, then click on "coverage"
